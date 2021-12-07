@@ -1,30 +1,49 @@
-// import styled from "styled-components";
-import styled from "styled-components";
 
-const Father = styled.div`
+import styled, {keyframes, Keyframes} from "styled-components";
+
+const Wrapper = styled.div `
   display: flex;
-`;
-
-const Box = styled.div`
-  background-color:${(props)=>props.bgColor};
-  width:100px;
-  height:100px;
-`;
-
-const Circle = styled(Box)`
-  border-radius: 50%;
+`
+const roateAnimation = keyframes` 
+  0%{
+    transform:rotate(0deg);
+  }
+  50%{
+    transform:rotate(360deg);
+    border-radius:100px;
+  }
+  100%{
+    transform:rotate(0deg);
+    border-radius:0px;
+  }
 `
 
-const Text = styled.span`
-  color:white;
-`;
+const Box = styled.div` 
+  height: 100px;
+  width: 100px;
+  background-color: tomato;
+  animation:${roateAnimation} 1s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span{
+    font-size: 36px;
+    &:hover{
+      font-size:40px;
+    }
+    &:active{
+      font-size:5px;
+    }
+  }
+`
 
 function App() {
   return (
-    <Father>
-      <Box bgColor="teal"/>
-      <Circle bgColor="tomato"/>
-    </Father>
+    <Wrapper>
+      <Box>
+        <span>😄</span>
+      </Box>
+    </Wrapper>
   );
 }
 
